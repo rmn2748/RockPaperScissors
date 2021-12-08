@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+body {
+    height: 100vh;
+    margin : 0;
+    display : flex;
+    flex-direction: column;
+    font-family: 'Press Start 2P';
+}
+.header {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding : 03%;
+}
+.scores {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding : 40px;
+}
+.choose {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    margin : 50px;
+    font-size: 32px;
+}
+.players {
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    flex : .3;
+    padding : 0 20%;
+}
+.weaponsbox {
+    display : flex;
+    justify-content: center;
+    gap : 50px;
+
+}
+
+input[type="image"] {
+    width : 120px;
+    border : 6px solid #585858;
+    padding : 20px;
+}
+.icon {
+    width : 150px;
+}
