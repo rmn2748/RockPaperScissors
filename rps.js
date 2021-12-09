@@ -1,4 +1,8 @@
-/// a function that returns pick rock, paper or scissors
+
+
+
+let computerScore = 0;
+let playerScore = 0;
 
 function computerPlay() {
     let choix;
@@ -12,75 +16,91 @@ function computerPlay() {
     else if (random == 2) {
         return 'Scissors'
     }
-    else { console.log('bug')};
- 
- }
+    else { console.log('bug') };
+}
 
- /// capitalize and lower case
- function capitalize(string) {
-    string = string.toLowerCase();
-    return string.charAt(0).toUpperCase() + string.slice(1);
- }
- /// one round. Return value to be edited to "flash" on screen
- function playRound(playerSelection, computerSelection) {
-     playerSelection = capitalize(playerSelection);
-     let winner;
+
+
+function playRound(e) {
+    let playerSelection = e.target.getAttribute('id');
+    let computerSelection = computerPlay();
+    const yourscore = document.querySelector('.yourscore');
+    const computerscore = document.querySelector('.computerscore');
     if (playerSelection === computerSelection) {
-        return winner = `Tie ! You both chose ${playerSelection}`;
+        comment.textContent = `Tie ! You both chose ${playerSelection}`;
     }
-     if (playerSelection === 'Rock') {
+    else if (playerSelection === 'Rock') {
         if (computerSelection === 'Paper') {
-            computerScore ++;
-            return winner =  ` You lose !${computerSelection} beats ${playerSelection}`
+            computerScore++;
+            computerscore.textContent = computerScore;
+            return comment.textContent = ` You lose ! ${computerSelection} beats ${playerSelection}`;
         }
-        else { 
+        else {
             playerScore++;
-            return winner = `You win !${playerSelection} beats ${computerSelection}`;
+            yourscore.textContent = playerScore;
+            return comment.textContent = `You win ! ${playerSelection} beats ${computerSelection}`;
         }
     }
     else if (playerSelection === 'Paper') {
         if (computerSelection === 'Scissors') {
-            computerScore ++;
-            return winner =  ` You lose !${computerSelection} beats ${playerSelection}`
+            computerScore++;
+            computerscore.textContent = computerScore;
+            return comment.textContent = ` You lose ! ${computerSelection} beats ${playerSelection}`
         }
-        else { 
+        else {
             playerScore++;
-            return winner = `You win !${playerSelection} beats ${computerSelection}`;
+            yourscore.textContent = playerScore;
+            return  comment.textContent = `You win ! ${playerSelection} beats ${computerSelection}`;
         }
     }
     else if (playerSelection === 'Scissors') {
         if (computerSelection === 'Rock') {
-            computerScore ++;
-            return winner =  ` You lose !${computerSelection} beats ${playerSelection}`
+            computerScore++;
+            computerscore.textContent = computerScore;
+           return comment.textContent = ` You lose ! ${computerSelection} beats ${playerSelection}`
         }
-        else { 
+        else {
             playerScore++;
-            return winner = `You win !${playerSelection} beats ${computerSelection}`;
+            yourscore.textContent = playerScore;
+            return comment.textContent = `You win ! ${playerSelection} beats ${computerSelection}`;
         }
-    }  
- }
- let playerScore = 0;
- let computerScore = 0;
- let computerChoice;
- let playerChoicce;
- //// an entire game of 5 rounds. Score between each round. Doesn't chance if tie (to be flashed in future)
- function game() {
-     
-     for (let i = 0; i < 5; i++) {
-         computerChoice = computerPlay();
-         playerChoice = prompt("Choose your sign");
-         playRound(playerChoice, computerChoice);
-         console.log(`You : ${playerScore} / The computer : ${computerScore}`);
-     }
-     if ( playerScore > computerScore) {
-         console.log('You won!');
-         playerScore = computerScore = 0;
-         
-     }
-     else { 
-         console.log('You lost :(');
-         playerScore = computerScore = 0;
     }
- }
 
-  
+}
+
+function DeclareWinner() {
+    const endgame = document.querySelector('.players');
+    if (playerScore === 5) {
+        endgame.textContent = 'You defeated the computer and saved mankind ! Congratulations !';
+        endgame.style.cssText = 'justify-content : center;';
+        weapons.forEach((weapon) => weapon.style.cssText = 'pointer-events: none');
+    }
+    else if (computerScore === 5) {
+        endgame.textContent = 'What a terrible day for mankind... You lost and doomed us all !'
+        endgame.style.cssText = 'justify-content : center;';
+        weapons.forEach((weapon) => weapon.style.cssText = 'pointer-events: none');
+        
+    }
+}
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+const comment = document.querySelector('.comment');
+
+const weapons = Array.from(document.querySelectorAll('.weapon'));
+
+
+
+
+
+weapons.forEach((weapon) => {
+    weapon.addEventListener("click", (e) => {
+        playRound(e);
+        weapon.classList.add('playing');
+        if (playerScore === 5 || computerScore === 5) { DeclareWinner(e)}
+    });
+});
+weapons.forEach(weapon => weapon.addEventListener('transitionend', removeTransition));

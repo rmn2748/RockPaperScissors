@@ -14,11 +14,23 @@ body {
     align-items: center;
     padding : 03%;
 }
-.scores {
+.midder {
     display : flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding : 40px;
+}
+.score {
+    display : flex;
+    gap : 5px;
+}
+.comment { 
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding : 20px;
 }
 .choose {
     display : flex;
@@ -39,6 +51,15 @@ body {
     justify-content: center;
     gap : 50px;
 
+}
+.weapon {
+    transition: all .09s ease;
+}
+
+.playing {
+    transform : scale(1.2);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
 }
 
 input[type="image"] {

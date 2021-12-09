@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="rps.js"></script>
+    <title>Rock Paper Scissors</title>
+    <script src="rps.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header"> A GAME OF ROCK PAPER SCISSORS </div>
     <div class="players">
         <div class="you"><img class="icon" src="./img/player.png" alt = "player icon"></div>
+        
         <div class="computer"><img class ="icon" src="./img/computer.png" alt = "computer icon"></div>
     </div>
-    <div class="scores"> Score : </div>
+    <div class="midder"> Score : <div class="score"> 
+        <div class="yourscore"> 0</div>-<div class="computerscore"> 0</div> </div> 
+
+
+     </div> </div>
+     <div class="comment"> </div>
     <div class="choose"> Choose your weapon !</div>
     <div class="weaponsbox">
-    <input class="weapon" type="image" src="./img/rock.png"/>
-    <input class="weapon" type="image" src="./img/paper.png"/>
-    <input class="weapon" type="image" src="./img/scissors.png"/>
+    <input class="weapon" id="Rock" type="image" src="./img/rock.png"/>
+    <input class="weapon" id ="Paper" type="image" src="./img/paper.png"/>
+    <input class="weapon" id="Scissors" type="image" src="./img/scissors.png"/>
     </div>
 </body>
 </html>
