@@ -7,9 +7,10 @@ body {
     display : flex;
     flex-direction: column;
     font-family: 'Press Start 2P';
+    
 }
 .header {
-    display : flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding : 03%;
@@ -69,4 +70,12 @@ input[type="image"] {
 }
 .icon {
     width : 150px;
+}
+
+span {
+    opacity : 0;
+    transition : all 0.5s ease;
+}
+.fade {
+    opacity : 1;
 }

@@ -3,6 +3,11 @@
 
 let computerScore = 0;
 let playerScore = 0;
+let char = 0;
+let timer = setInterval(onTick, 100);
+
+
+
 
 function computerPlay() {
     let choix;
@@ -104,3 +109,32 @@ weapons.forEach((weapon) => {
     });
 });
 weapons.forEach(weapon => weapon.addEventListener('transitionend', removeTransition));
+
+
+
+const text = document.querySelector('.header');
+const strText = text.textContent;
+const splitText = strText.split("");
+
+text.innerHTML = "";
+for (let i=0; i < splitText.length; i++) {
+    if (splitText[i] === " ")
+    { splitText[i] = '&nbsp'
+    console.log(splitText[i]);
+    }
+    text.innerHTML +=  `<span>  ${splitText[i]}  </span> `
+}
+
+function onTick() {
+    const span = text.querySelectorAll('span')[char];
+    span.classList.add('fade');
+    char++
+    if (char === splitText.length){
+        complete();
+        return;
+    }
+}
+function complete() {
+    clearInterval(timer);
+    timer = null;
+}
